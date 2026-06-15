@@ -1,0 +1,44 @@
+# Models and large binary artifacts
+models/
+
+# Raw ZINC15 downloads (too large)
+data/raw/zinc15*
+
+# MD trajectories (multi-GB files)
+results/md/trajectories/
+*.dcd
+*.xtc
+
+# Generated PDB files (not source structures)
+*.pdb
+
+# Environment and credentials
+.env
+*.env
+secrets.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Conda
+.python-version
