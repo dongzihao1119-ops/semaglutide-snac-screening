@@ -314,6 +314,158 @@ PE_COMPOUNDS = [
         "source": "Vlüssaltu et al. 2012 BBRC; Guo et al. 2004; Zhou et al. 2012 Acta Pharmacol Sin",
         "notes": "POD technology. TEER recovery ~100% after 24h washout (20mM). 15-45× paracellular permeability enhancement. Basolateral more effective than apical.",
     },
+
+    # =========================================================================
+    # Alkyl saccharides — non-ionic sugar-based surfactants
+    # =========================================================================
+    {
+        "name": "Dodecyl maltoside (DDM)",
+        "smiles": "CCCCCCCCCCCCOC1C(O)C(O)C(O)C(CO)O1",  # Approximate — dodecyl chain + maltose
+        "category": "alkyl_saccharide",
+        "teer_reduction_pct": 90.0,           # Strong TEER reduction at 20mM
+        "teer_concentration_mM": 20.0,
+        "papp_marker": "insulin (rat rectal)",
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": 0.13,                       # Very low CMC — strong surfactant
+        "mw_da": 510.62,
+        "logp": 1.0,
+        "mechanism": "surfactant_membrane_perturbation",
+        "confidence": "MEDIUM",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev 106:277-319 (Table 1, p.28 EP calculation)",
+        "notes": "Most efficacious alkyl saccharide. F(insulin)=73% in some studies. FDA GRAS. Very low CMC (0.13mM) means high monomer concentration at working doses.",
+    },
+    {
+        "name": "Decyl maltoside",
+        "smiles": "CCCCCCCCCCOC1C(O)C(O)C(O)C(CO)O1",  # decyl chain
+        "category": "alkyl_saccharide",
+        "teer_reduction_pct": 80.0,
+        "teer_concentration_mM": 20.0,
+        "papp_marker": "insulin (rat rectal)",
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": 1.6,
+        "mw_da": 482.56,
+        "logp": 0.5,
+        "mechanism": "surfactant_membrane_perturbation",
+        "confidence": "MEDIUM",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev (p.18, F=62% at 20mM)",
+        "notes": "F=62% for insulin at 20mM (rat rectal). CMC=1.6mM. Less effective than DDM.",
+    },
+    {
+        "name": "Decyl glucoside",
+        "smiles": "CCCCCCCCCCOC1C(O)C(O)C(O)C(CO)O1",
+        "category": "alkyl_saccharide",
+        "teer_reduction_pct": 40.0,
+        "teer_concentration_mM": 20.0,
+        "papp_marker": "insulin (rat rectal)",
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": 3.0,
+        "mw_da": 468.53,
+        "logp": 0.0,
+        "mechanism": "surfactant_membrane_perturbation",
+        "confidence": "LOW",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev (p.18, F=18% at 20mM)",
+        "notes": "F=18% for insulin at 20mM. Higher CMC than maltoside analogs. Lower efficacy.",
+    },
+    {
+        "name": "Octyl glucoside",
+        "smiles": "CCCCCCCCOC1C(O)C(O)C(O)C(CO)O1",
+        "category": "alkyl_saccharide",
+        "teer_reduction_pct": 50.0,
+        "teer_concentration_mM": 30.0,
+        "papp_marker": "insulin (rat rectal)",
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": 250.0,                      # Exceptionally high CMC
+        "mw_da": 440.48,
+        "logp": -0.3,
+        "mechanism": "surfactant_membrane_perturbation",
+        "confidence": "LOW",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev (p.18, F=48% at 30mM)",
+        "notes": "F=48% for insulin at 30mM. Extremely high CMC (250mM) despite moderate efficacy. Unusual profile.",
+    },
+
+    # =========================================================================
+    # Anionic surfactants
+    # =========================================================================
+    {
+        "name": "Sodium dodecyl sulfate (SDS)",
+        "smiles": "CCCCCCCCCCCCOS(=O)([O-])=O.[Na+]",
+        "category": "anionic_surfactant",
+        "teer_reduction_pct": 90.0,           # Strong TEER reduction
+        "teer_concentration_mM": 5.0,          # Effective at low mM
+        "papp_marker": "mannitol (Caco-2)",
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": 8.0,                        # Well-known CMC
+        "mw_da": 288.38,
+        "logp": 3.4,
+        "mechanism": "surfactant_membrane_solubilization_plus_TJ_opening",
+        "confidence": "MEDIUM",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev (p.28-29, comparison with C10, EDTA, Na deoxycholate)",
+        "notes": "Potent but toxic. 5mM → TEER loss. Rat jejunal instillation ranked: Na deoxycholate (5mM) ≈ SDS (5mM) > EDTA (25mM) > PEG400 (50%). Mucosal damage at high concentrations.",
+    },
+    {
+        "name": "Sodium deoxycholate",
+        "smiles": "CC(CCC(=O)[O-])C1CCC2C1(C(CC3C2CCC4C3(CCC(C4)O)C)O)C.[Na+]",
+        "category": "bile_salt",
+        "teer_reduction_pct": 80.0,           # Strong TEER reduction
+        "teer_concentration_mM": 5.0,
+        "papp_marker": "phenol red (rat jejunal instillation)",
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": 2.0,
+        "mw_da": 414.56,
+        "logp": 3.0,
+        "mechanism": "paracellular_TJ_opening_plus_membrane_solubilization",
+        "confidence": "MEDIUM",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev (p.29, rat jejunal instillation comparison)",
+        "notes": "Dihydroxy bile salt. Ranked: Na deoxycholate (5mM) ≈ SDS (5mM) > EDTA (25mM) in rat jejunal instillation. More toxic than conjugated bile salts.",
+    },
+    {
+        "name": "Chitosan hydrochloride",
+        "smiles": None,                        # Polymer — no single SMILES
+        "category": "polymer",
+        "teer_reduction_pct": 70.0,           # Moderate TEER reduction
+        "teer_concentration_mM": None,         # 0.5% w/v typically
+        "papp_marker": "FD-4 / mannitol (Caco-2)",
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": None,
+        "mw_da": None,                         # Polydisperse
+        "logp": None,
+        "mechanism": "mucoadhesive_plus_TJ_opening_via_ZO-1_occludin_redistribution",
+        "confidence": "LOW",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev (p.27, 0.7% chitosan + aprotinin)",
+        "notes": "Polymer-based. Mucoadhesive. TJ opening via ZO-1/occludin redistribution. Dose typically expressed as % w/v not mM. NOT GRAS — limits translational potential.",
+    },
+    {
+        "name": "Labrasol",
+        "smiles": None,                        # Mixture — caprylocaproyl polyoxyl-8 glycerides
+        "category": "mixed_surfactant_mixture",
+        "teer_reduction_pct": 30.0,           # Mild TEER reduction
+        "teer_concentration_mM": None,         # % w/v based
+        "papp_marker": None,
+        "papp_cm_s": None,
+        "papp_baseline_cm_s": None,
+        "cc50_uM": None,
+        "cmc_mM": None,
+        "mw_da": None,                         # Mixture
+        "logp": None,
+        "mechanism": "surfactant_membrane_fluidity_plus_P-gp_inhibition",
+        "confidence": "LOW",
+        "source": "Maher et al. 2016 Adv Drug Deliv Rev (p.18, Gattefosse product)",
+        "notes": "Gattefosse product. 90% surfactant + glycerides. Used in oral peptide formulations. GRAS excipient.",
+    },
 ]
 
 # ===========================================================================
