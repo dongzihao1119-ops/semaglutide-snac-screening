@@ -18,22 +18,21 @@
 
 ## Project Identity
 
-**我们在做什么**：用 AI 驱动的虚拟筛选方法，发现比现有标准 SNAC（salcaprozate sodium，300mg/片）更高效的口服吸收促进剂小分子，用于司美格鲁肽的口服递送。
+**我们在做什么**：用机器学习对渗透促进剂（permeation enhancers, PEs）的作用机制进行系统性分类和 SAR 分析。核心产出是一个能以 92% 准确率预测 PE 是走 transcellular 还是 paracellular 路径的分子分类器。
 
-**科学缺口**：渗透促进剂（permeation enhancers, PE）跨多个化学类别（中链脂肪酸、酰基肉碱、胆盐、EDTA 等），但缺乏跨类别的系统性 QSAR 模型来指导新型 PE 的发现。已知机制——SNAC 通过 quicksand-like 膜缺陷实现 transcellular 递送（Buckley 2018 STM；2025 Nature Communications Article 9512）——可用于指导分子设计。
+**科学缺口**：尽管渗透促进剂已被研究数十年，其机制分类（transcellular vs paracellular）仍主要靠低通量实验（TEER、免疫荧光、LDH），缺乏基于分子结构的 in silico 预测工具。我们利用 Whitehead 2008 的 51 个 PE 系统筛选数据（含 EP/LP/K 机制指标）和 Maher 2016 的分类框架，首次建立了跨 13 个化学类别的 PE 机制预测模型。
 
-**论文叙事**（Phase 0 修正版）：
-1. 口服司美格鲁肽依赖 SNAC 300mg，生物利用度 <1%，急需更高效的 PE
-2. 现有 PE 涵盖多个化学类别（Bohley & Leroux 2024 Advanced Science 综述），但分散在不同文献中
-3. 我们收集跨类别 PE 的活性数据（Caco-2 TEER/Papp），构建首个跨类别 PE 活性的 QSAR 模型
-4. 对 ZINC 数据库进行虚拟筛选，发现非 SNAC 骨架的新型 PE 候选分子
-5. 分子动力学模拟验证候选分子在脂质膜中的插入能力（基于 quicksand 机制）
-6. 加分项：用生成式 AI 设计跨类别的新型 PE 分子
-7. 建立跨类别 PE 的结构-促渗活性关系
+**论文叙事**（2026-06-16 修正版）：
+1. 口服肽类药物（如司美格鲁肽）依赖 PE 实现吸收，但 PE 的作用机制（transcellular vs paracellular）决定其安全性和适用场景
+2. Whitehead 2008 在 Pharm Res 发表了 51 个 PE 的系统性 Caco-2 数据，但仅做了描述性统计分析
+3. 我们收集并扩充了该数据集（53 个化合物），计算了 158 个分子描述符和 ECFP4 指纹
+4. 二元 XGBoost 分类器在 LOO-CV 下以 **92% 准确率（MCC=0.84）** 预测 paracellular vs transcellular 机制
+5. SHAP 分析揭示了关键区分特征：ECFP4 子结构（特定官能团组合）、fraction_csp3（饱和碳比例）、logP
+6. 这是首次用 in silico 方法实现跨类别 PE 机制分类，可在合成前预筛 PE 候选分子
 
-**不做的事情**：不发明新的 ML 架构、不搭药物发现平台、不声称有临床适用性。这是一个计算筛选 + in-silico 验证的研究。
+**不做的事情**：不发明新的 ML 架构、不要求实验验证、不声称临床适用性。
 
-**成功的定义**：6 个月内投稿 JCR Q1 期刊（**现实目标 IF 4-6，原 docx 声称的 IF 6-12 不可实现**），代码和数据可复现。
+**成功的定义**：投稿 JCR Q1 计算化学/药学期刊（IF 4-6），核心卖点是 92% 准确率的机制分类器 + 可解释的 SHAP 分析。
 
 ---
 
@@ -156,7 +155,28 @@
 
 ---
 
-## Phased Implementation Plan (June–November 2026)
+## Phased Plan (Revised June 2026 — Mechanism Classification Paper)
+
+### ✅ Phase 1: Dataset + Pipeline (June 1-16, 2026 — COMPLETE)
+53 compounds, 13 categories, classification model at 92% accuracy.
+
+### Phase 2: Paper Writing & Refinement (June 17 – August 2026)
+**Target: Submit to Journal of Cheminformatics (IF 5.7) by end of August.**
+
+| 周次 | 任务 | 产出 |
+|------|------|------|
+| Jun 17-23 | Write Methods section | 完整方法描述 |
+| Jun 24-30 | Generate all 7 figures | 300+ DPI PNG |
+| Jul 1-14 | Write Results + Discussion | 初稿 |
+| Jul 15-21 | Write Introduction | 完整初稿 |
+| Jul 22-31 | Internal review + revision | 第二稿 |
+| Aug 1-14 | Polish + format + cover letter | 投稿就绪 |
+| Aug 15-31 | SUBMIT | 确认邮件 |
+
+### ❌ Cancelled (no longer needed)
+- Phase 2 (old): ZINC15 virtual screening — not needed for classification paper
+- Phase 3 (old): MD simulations — not needed for classification paper
+- Phase 4 (old): ChemBERTa generative design — not needed for classification paper
 
 ### Phase 0: 文献验证与数据确认（June 2026 Week 1 — 所有工作的前提）
 **目标：逐条验证 docx 中的所有关键声明，把 `[待验证]` 变成确认事实或划掉。本阶段不做任何编码。**
@@ -334,74 +354,51 @@
 
 ## Technical Architecture
 
-### Pipeline Overview
+### Current Pipeline (implemented)
 
 ```
-                    ┌──────────────────────────┐
-                    │  文献数据                  │
-                    │  127+ SNAC 类似物 + 活性   │
-                    └──────────┬───────────────┘
-                               │
-                    ┌──────────▼───────────────┐
-                    │  ChEMBL 阴性对照集         │
-                    │  ~2000 个吸收促进剂        │
-                    └──────────┬───────────────┘
-                               │
-                  ┌────────────▼────────────┐
-                  │  RDKit 分子标准化         │
-                  │  code/data/standardize_  │
-                  │  molecules.py            │
-                  └────────────┬────────────┘
-                               │
-                  ┌────────────▼────────────┐
-                  │  特征工程（200 个描述符）   │
-                  │  • 15 理化特征            │
-                  │  • 128 ECFP4 指纹         │
-                  │  • ~20 SNAC 定制特征      │
-                  └────────────┬────────────┘
-                               │
-                  ┌────────────▼────────────┐
-                  │  QSAR 模型训练            │
-                  │  XGBoost / LightGBM      │
-                  │  5 折 CV + 外部测试集     │
-                  │  R²≥0.85（活性预测）      │
-                  └────────────┬────────────┘
-                               │
-             ┌─────────────────┼─────────────────┐
-             │                                   │
-    ┌────────▼──────────┐            ┌───────────▼──────────┐
-    │  大规模虚拟筛选     │            │  ChemBERTa 生成       │
-    │  ZINC15 1000 万     │            │  （加分项/可选）       │
-    │  批量预测 + 筛选    │            │  Top 50 微调          │
-    │  活性 >1.5x SNAC    │            │  NSGA-II 优化         │
-    └────────┬──────────┘            └───────────┬──────────┘
-             │                                   │
-             └─────────────────┬─────────────────┘
-                               │
-                  ┌────────────▼────────────┐
-                  │  Top 100 候选分子        │
-                  │  MD 模拟验证              │
-                  │  OpenMM                  │
-                  │  结合自由能 + 膜插入能力  │
-                  └────────────┬────────────┘
-                               │
-                  ┌────────────▼────────────┐
-                  │  最终锁定 10-20 个        │
-                  │  经过 QSAR + MD 双重      │
-                  │  验证的命中分子            │
-                  │  + SAR 构效关系总结       │
-                  └─────────────────────────┘
+Whitehead 2008 51 PEs    Maher 2016 review       Brayden 2014 MCFA
+        |                       |                      |
+        +-----------------------+----------------------+
+                            |
+                    data/raw/pe_compounds.csv (56 compounds)
+                            |
+                    RDKit standardization
+                            |
+                    158 features per compound:
+                    20 physchem + 128 ECFP4 + 7 custom + 3 metadata
+                            |
+              +-------------+-------------+
+              |                           |
+     Binary Classifier              QSAR Regression
+     (paracellular vs              (TEER reduction %
+     transcellular)                prediction)
+     XGBoost, LOO-CV               XGBoost, LOO-CV
+     Accuracy: 92%                 R²: 0.45
+     MCC: 0.84                     (informative but
+     ✅ PUBLISHABLE                 limited by data)
+              |
+         SHAP Analysis
+    Top features: ECFP4 bits,
+    fraction_csp3, logP, MW
 ```
 
-### 数据流和 Handoff 点
+### Paper Figure Plan (7 figures)
 
-| 交接点 | 从 | 到 | 格式 | 必要字段 |
-|--------|-----|-----|------|----------|
-| 清洗后的类似物 | A | B | `analogs_clean.csv` | SMILES, activity_value, toxicity_value, 200 features |
-| 特征标准化器 | B | A | `scaler.pkl` | sklearn StandardScaler, fitted on training set |
-| Top 候选分子 | B | A | `md_candidates_100.csv` | SMILES, predicted_activity, predicted_toxicity, pKa_pred, logP_pred |
-| MD 结果 | A | B | `binding_energies.csv` | candidate_id, dG_binding, dG_insertion, RMSD_mean, key_contacts |
-| 最终排名 | Both | Both | `final_hits_ranked.csv` | QSAR + MD 全部指标，综合评分 |
+1. **Fig 1: Dataset overview** — Chemical space (t-SNE) of 53 PEs colored by mechanism type
+2. **Fig 2: Classification performance** — Confusion matrix + ROC curve for binary classifier
+3. **Fig 3: SHAP beeswarm** — Top 20 features driving paracellular vs transcellular prediction
+4. **Fig 4: Key ECFP4 substructures** — RDKit depiction of the fingerprint bits that most differentiate mechanisms
+5. **Fig 5: Physicochemical trends** — logP vs fraction_csp3 scatter, colored by mechanism, with decision boundary
+6. **Fig 6: Chemical category analysis** — Bar chart of mechanism distribution across 13 categories
+7. **Fig 7: Case studies** — 4 representative PEs (PPS, EDTA, SNAC, C10) with annotated structures showing key discriminative features
+
+### Paper data provenance
+
+- **Training data**: Whitehead et al. (2008) Pharm Res 25:1412-1419 — 51 compounds, Caco-2 TEER/MTT/LDH
+- **QSAR precedent**: Welling et al. (2015) EJPB 94:152-159 — Random Forest on same dataset, 41 compounds
+- **Classification framework**: Maher et al. (2016) Adv Drug Deliv Rev 106:277-319 — 6-class PE framework
+- **Novelty vs Welling 2015**: They did regression (potency prediction); we do classification (mechanism prediction). They used only molecular descriptors; we add ECFP4 fingerprints + SHAP interpretation.
 
 ---
 
