@@ -43,3 +43,4 @@ build/
 # Conda
 .python-version
 .venv/
+data/external/*.pdf
