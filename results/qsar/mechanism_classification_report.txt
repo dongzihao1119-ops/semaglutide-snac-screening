@@ -1,0 +1,17 @@
+Binary classification (paracellular vs transcellular):
+  N=25, Para=14, Trans=11
+  LOO-CV Accuracy: 0.920
+  Balanced: 0.919
+  MCC: 0.838
+
+               precision    recall  f1-score   support
+
+Transcellular       0.91      0.91      0.91        11
+ Paracellular       0.93      0.93      0.93        14
+
+     accuracy                           0.92        25
+    macro avg       0.92      0.92      0.92        25
+ weighted avg       0.92      0.92      0.92        25
+
+
+Multi-class (Maher 6-class) Accuracy: 0.019

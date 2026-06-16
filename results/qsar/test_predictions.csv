@@ -1,10 +1,6 @@
 compound,y_true,y_pred_xgb,y_pred_lgb
-Sodium caprylate (C8),50.0,62.193153,55.0
-Sodium pelargonate (C9),70.0,62.193153,55.0
-Sodium caprate (C10),90.0,62.193153,55.0
-Sodium undecanoate (C11),85.0,62.193153,55.0
-Sodium laurate (C12),95.0,64.96135,55.0
-Sodium 10-undecylenate (C11:1),80.0,62.193153,55.0
-"Lauroylcarnitine chloride (C12-carnitine, LCC)",15.0,64.96135,55.0
-"Palmitoylcarnitine chloride (C16-carnitine, PCC)",38.0,64.98052,55.0
-EDTA disodium,72.0,61.879417,55.0
+SNAC (salcaprozate sodium),65.0,54.307556,33.58574210079847
+Benzyldimethyldodecylammonium chloride (BDAC),80.0,69.13427,37.419285400901735
+Methylpiperazine,20.0,28.8872,46.05564961599208
+Sodium salicylate,20.0,30.49183,55.771989877710816
+Glycyrrhetinic acid,30.0,48.095264,55.143437062280334

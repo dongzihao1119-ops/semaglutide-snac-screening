@@ -125,17 +125,22 @@ def main():
             feats[f"ecfp4_{i:03d}"] = int(ecfp4[i])
         feats.update(compute_custom_pe_features(mol))
 
-        teer = row.get("teer_reduction_pct")
-        papp = row.get("papp_cm_s")
-        cc50 = row.get("cc50_uM")
+        def _to_float(val):
+            if val and val != "None" and val != "":
+                return float(val)
+            return None
 
         combined = {
             "name": row["name"],
             "clean_smiles": smiles,
             "category": row.get("category", ""),
-            "teer_reduction_pct": float(teer) if teer and teer != "None" and teer != "" else None,
-            "papp_cm_s": float(papp) if papp and papp != "None" and papp != "" else None,
-            "cc50_uM": float(cc50) if cc50 and cc50 != "None" and cc50 != "" else None,
+            "teer_reduction_pct": _to_float(row.get("teer_reduction_pct")),
+            "papp_cm_s": _to_float(row.get("papp_cm_s")),
+            "cc50_uM": _to_float(row.get("cc50_uM")),
+            # Carry through mechanism metadata
+            "mechanism_type": row.get("mechanism_type", ""),
+            "k_value": row.get("k_value", ""),
+            "maher_class": row.get("maher_class", ""),
             **feats,
         }
         feature_rows.append(combined)
