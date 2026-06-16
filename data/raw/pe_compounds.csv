@@ -18,3 +18,40 @@ Decyl glucoside,CCCCCCCCCCOC1OC(CO)C(O)C(O)C1O,CCCCCCCCCCOC1C(O)C(O)C(O)C(CO)O1,
 Octyl glucoside,CCCCCCCCOC1OC(CO)C(O)C(O)C1O,CCCCCCCCOC1C(O)C(O)C(O)C(CO)O1,alkyl_saccharide,50.0,30.0,insulin (rat rectal),,,,250.0,440.48,-0.3,surfactant_membrane_perturbation,LOW,"Maher et al. 2016 Adv Drug Deliv Rev (p.18, F=48% at 30mM)",F=48% for insulin at 30mM. Extremely high CMC (250mM) despite moderate efficacy. Unusual profile.
 Sodium dodecyl sulfate (SDS),CCCCCCCCCCCCOS(=O)(=O)[O-].[Na+],CCCCCCCCCCCCOS(=O)([O-])=O.[Na+],anionic_surfactant,90.0,5.0,mannitol (Caco-2),,,,8.0,288.38,3.4,surfactant_membrane_solubilization_plus_TJ_opening,MEDIUM,"Maher et al. 2016 Adv Drug Deliv Rev (p.28-29, comparison with C10, EDTA, Na deoxycholate)",Potent but toxic. 5mM → TEER loss. Rat jejunal instillation ranked: Na deoxycholate (5mM) ≈ SDS (5mM) > EDTA (25mM) > PEG400 (50%). Mucosal damage at high concentrations.
 Sodium deoxycholate,CC(CCC(=O)[O-])C1CCC2C3CCC4CC(O)CCC4(C)C3CC(O)C12C.[Na+],CC(CCC(=O)[O-])C1CCC2C1(C(CC3C2CCC4C3(CCC(C4)O)C)O)C.[Na+],bile_salt,80.0,5.0,phenol red (rat jejunal instillation),,,,2.0,414.56,3.0,paracellular_TJ_opening_plus_membrane_solubilization,MEDIUM,"Maher et al. 2016 Adv Drug Deliv Rev (p.29, rat jejunal instillation comparison)",Dihydroxy bile salt. Ranked: Na deoxycholate (5mM) ≈ SDS (5mM) > EDTA (25mM) in rat jejunal instillation. More toxic than conjugated bile salts.
+Sodium lauryl sulfate (SLS),,CCCCCCCCCCCCOS(=O)([O-])=O.[Na+],anionic_surfactant,80,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412; Welling 2015 EJPB 94:152,1% w/v ≈ 34.7mM. Strong paracellular enhancer.
+Sodium decyl sulfate (SDeS),,CCCCCCCCCCOS(=O)([O-])=O.[Na+],anionic_surfactant,75,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C10 sulfate. Similar to SLS but shorter chain.
+Sodium octyl sulfate (SOS),,CCCCCCCCOS(=O)([O-])=O.[Na+],anionic_surfactant,60,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C8 sulfate. Less potent than SLS.
+Sodium laureth sulfate (SLA),,CCCCCCCCCCCCOCCOCCOCCOCCOCCOS(=O)([O-])=O.[Na+],anionic_surfactant,70,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,Ethoxylated variant. SMILES approximate (n=4 EO units).
+N-Lauroylsarcosine sodium,,CCCCCCCCCCCC(=O)N(C)CC(=O)O.[Na+],anionic_surfactant,50,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,CAS 137-16-6. Mild surfactant.
+Cetyltrimethylammonium bromide (CTAB),,CCCCCCCCCCCCCCCC[N+](C)(C)C.[Br-],cationic_surfactant,90,,,,,,,,,,HIGH,Whitehead 2008 Pharm Res 25:1412,Highly potent but highly toxic. Cationic surfactant.
+Decyltrimethylammonium bromide (DTAB),,CCCCCCCCCC[N+](C)(C)C.[Br-],cationic_surfactant,70,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C10 quaternary ammonium.
+Benzyldimethyldodecylammonium chloride (BDAC),,CCCCCCCCCCCC[N+](C)(C)Cc1ccccc1.[Cl-],cationic_surfactant,80,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Benzalkonium-type. Antimicrobial.
+Myristyltrimethylammonium chloride (TTAC),,CCCCCCCCCCCCCC[N+](C)(C)C.[Cl-],cationic_surfactant,85,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C14 quaternary ammonium.
+Dodecylpyridinium chloride (DPC),,CCCCCCCCCCCC[n+]1ccccc1.[Cl-],cationic_surfactant,80,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Pyridinium-based.
+Decyldimethylammoniopropane sulfonate (DPS),,CCCCCCCCCC[N+](C)(C)CCCS([O-])(=O)=O,zwitterionic_surfactant,60,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C10 sulfobetaine. Transcellular mechanism (K=0).
+Myristyldimethylammoniopropane sulfonate (MPS),,CCCCCCCCCCCCCC[N+](C)(C)CCCS([O-])(=O)=O,zwitterionic_surfactant,70,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,C14 sulfobetaine. Transcellular.
+Palmityldimethylammoniopropane sulfonate (PPS),,CCCCCCCCCCCCCCCC[N+](C)(C)CCCS([O-])(=O)=O,zwitterionic_surfactant,80,,,,,,,,,,HIGH,Whitehead 2008 Pharm Res 25:1412; Welling 2015 EJPB,"C16 sulfobetaine (Zwittergent 3-16). BEST transcellular enhancer. Non-cytotoxic at 0.01%. EP=0.8, TP=0, K=0."
+Sorbitan monooleate (Span 80),,CCCCCCCC/C=C\CCCCCCCC(=O)OC[C@@H](O)[C@H]1OC[C@H](O)[C@H]1O,nonionic_surfactant,40,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,Food-grade emulsifier. Low potency as PE.
+Sodium glycocholate,,CC(CCC(=O)NCC(=O)[O-])C1CCC2C1(C(CC3C2C(CC4C3(CCC(C4)O)C)O)O)C.[Na+],bile_salt,40,10,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Glycine-conjugated bile salt. Less potent than deoxycholate.
+Hexanoic acid (C6),,CCCCCC(=O)O,fatty_acid,10,,,,,,,,,,HIGH,Whitehead 2008 Pharm Res 25:1412; Welling 2015 EJPB,C6. Minimal PE activity. Effective chain length threshold at C8.
+Heptanoic acid (C7),,CCCCCCC(=O)O,fatty_acid,20,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C7. Borderline activity.
+Cholic acid,,CC(CCC(=O)O)C1CCC2C1(C(CC3C2C(CC4C3(CCC(C4)O)C)O)O)C,fatty_acid,30,10,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Trihydroxy bile acid. Weak PE compared to deoxycholate.
+Methyl laurate,,CCCCCCCCCCCC(=O)OC,fatty_ester,60,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C12 methyl ester. Paracellular (K≈0.9).
+Isopropyl myristate,,CCCCCCCCCCCCCC(=O)OC(C)C,fatty_ester,50,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C14 isopropyl ester.
+Isopropyl palmitate,,CCCCCCCCCCCCCCCC(=O)OC(C)C,fatty_ester,45,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C16 isopropyl ester.
+Methyl palmitate,,CCCCCCCCCCCCCCCC(=O)OC,fatty_ester,40,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C16 methyl ester.
+Diethyl sebacate,,CCOC(=O)CCCCCCCCC(=O)OCC,fatty_ester,30,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,Diester. Moderate activity.
+Sodium oleate,,CCCCCCCC/C=C\CCCCCCCC(=O)[O-].[Na+],sodium_salt_fatty_acid,55,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C18:1 unsaturated. Soap.
+Urea,,NC(=O)N,other,0,,,,,,,,,,HIGH,Whitehead 2008 Pharm Res 25:1412; Welling 2015 EJPB,NEGATIVE control. Tpot ≈ 0. No PE effect.
+Laurylamine,,CCCCCCCCCCCCN,fatty_amine,55,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,C12 primary amine. Moderate PE.
+Caprolactam,,O=C1CCCCCN1,nitrogen_ring,10,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Nylon-6 monomer. Weak PE.
+Methylpyrrolidone (NMP),,CN1CCCC1=O,nitrogen_ring,15,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Industrial solvent. Weak PE.
+Methylpiperazine,,CN1CCNCC1,nitrogen_ring,20,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Cyclic diamine.
+Phenylpiperazine,,c1ccc(N2CCNCC2)cc1,nitrogen_ring,60,,,,,,,,,,HIGH,Whitehead 2008 Pharm Res 25:1412,"EP=0.95, TP=0.09, K=0.86. Safe paracellular enhancer. Calcein study control."
+Sodium salicylate,,O=C([O-])c1ccccc1O.[Na+],other,20,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,NSAID. Weak PE activity.
+Glycyrrhetinic acid,,CC1(C)[C@@H]2CC[C@@]3(C)[C@H]4CC[C@@]5(C)CC[C@@H](O)[C@H](C)[C@H]5[C@]4(C=O)CC[C@@]3(C)[C@]2(C)CC[C@@H]1O,other,30,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,Licorice component. SMILES approximate.
+Limonene,,CC1=CCC(CC1)C(=C)C,other,15,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Terpene. Mild PE.
+Cineole (Eucalyptol),,CC12CCC(CC1)C(C)(C)O2,other,10,,,,,,,,,,MEDIUM,Whitehead 2008 Pharm Res 25:1412,Terpene. Weak PE.
+Octyldodecanol,,CCCCCCCCCC(CCCCCCCC)CO,other,5,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,Fatty alcohol. Very weak PE.
+Fenchone,,CC1(C)[C@H]2CC[C@@](C)(C2)C1=O,other,10,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,Terpenoid. Weak PE.
+Menthone,,CC(C)[C@H]1CC[C@H](C)C[C@H]1=O,other,10,,,,,,,,,,LOW,Whitehead 2008 Pharm Res 25:1412,Terpenoid. Weak PE.
